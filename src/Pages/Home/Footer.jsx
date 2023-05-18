@@ -4,7 +4,7 @@ const Footer = () => {
     return (
       <footer className="footer p-10 bg-slate-900 text-white">
       <div>
-       <img src="#" alt="Logo" />
+       <img src="./logoo.png" alt="Logo" className='w-3/12'/>
         <p>Toys Zone<br/>Providing reliable toys since 2022</p>
       </div> 
       <div>
