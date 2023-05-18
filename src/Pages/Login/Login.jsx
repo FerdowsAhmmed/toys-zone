@@ -14,14 +14,11 @@ const Login = () => {
     const auth = getAuth(app);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // User logged in successfully
         setError('');
         setSuccess('User logged in successfully');
         console.log(userCredential.user);
-        // You can redirect the user to a different page here
       })
       .catch((error) => {
-        // Error occurred during login
         const errorMessage = error.message;
         setError(errorMessage);
       });
@@ -32,14 +29,11 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        // User logged in with Google successfully
         setError('');
         setSuccess('User logged in successfully');
         console.log(result.user);
-        // You can redirect the user to a different page here
       })
       .catch((error) => {
-        // Error occurred during Google login
         const errorMessage = error.message;
         setError(errorMessage);
       });
@@ -70,7 +64,7 @@ const Login = () => {
             placeholder="Password"
           />
           <div className="flex items-center justify-between">
-            <div className="text-sm">
+            <div className="text-sm mx-auto">
               <Link to="/register">
                 Do not have an account? <span className="font-medium text-indigo-600 hover:text-indigo-500"> Please Register here</span>
               </Link>

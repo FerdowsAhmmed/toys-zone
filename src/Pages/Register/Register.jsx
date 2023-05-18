@@ -96,7 +96,7 @@ const Register = () => {
             </button>
           </div>
         </form>
-        <div className="text-sm">
+        <div className="text-sm text-center">
           <Link to="/login">
             Already have an account? <span className="font-medium text-indigo-600 hover:text-indigo-500"> Please Login here</span>
           </Link>
