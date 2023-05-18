@@ -1,50 +1,101 @@
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import app from '../../Firebase/firebaseConfig';
 
 const Login = () => {
-    return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-md w-full space-y-8">
-            <div>
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login here</h2>
-            </div>
-            <form className="mt-8 space-y-6">
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full outline-none p-3"
-                    placeholder="Email address"
-                  />
-                  <br />
-                  <input
-                    name="password"
-                    type="password"
-                    required
-                    className="w-full outline-none p-3"
-                    placeholder="Password"
-                  />
-              <div className="flex items-center justify-between">
-                <div className="text-sm">
-                  <Link to="/register" >
-                    Do not have an account?  <span className="font-medium text-indigo-600 hover:text-indigo-500"> Please Register here</span>
-                  </Link>
-                </div>
-              </div>
-              <div>
-           <Link to='/register'>     
-                 <button
-                  type="submit"
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Login
-                </button>
-            </Link>
-              </div>
-            </form>
-          </div>
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const handleEmailPasswordLogin = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    const auth = getAuth(app);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // User logged in successfully
+        setError('');
+        setSuccess('User logged in successfully');
+        console.log(userCredential.user);
+        // You can redirect the user to a different page here
+      })
+      .catch((error) => {
+        // Error occurred during login
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // User logged in with Google successfully
+        setError('');
+        setSuccess('User logged in successfully');
+        console.log(result.user);
+        // You can redirect the user to a different page here
+      })
+      .catch((error) => {
+        // Error occurred during Google login
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        <div>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login here</h2>
         </div>
-      );
-    };
-    
+        <form onSubmit={handleEmailPasswordLogin} className="mt-8 space-y-6">
+        {error && <div className="error-message">{error}</div>}
+          {success && <div className="success-message">{success}</div>}
+          <input
+            name="email"
+            type="email"
+            required
+            className="w-full outline-none p-3"
+            placeholder="Email address"
+          />
+          <br />
+          <input
+            name="password"
+            type="password"
+            required
+            className="w-full outline-none p-3"
+            placeholder="Password"
+          />
+          <div className="flex items-center justify-between">
+            <div className="text-sm">
+              <Link to="/register">
+                Do not have an account? <span className="font-medium text-indigo-600 hover:text-indigo-500"> Please Register here</span>
+              </Link>
+            </div>
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+        <div className="mt-6">
+          <button
+            onClick={handleGoogleLogin}
+            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+          >
+            Sign in with Google
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Login;
