@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="navbar flex flex-row justify-around bg-red-400">
+    <div className="navbar flex flex-row justify-around bg-indigo-600 text-white">
       <img src="" alt="logo" />
       <nav className="flex space-x-4">
         <Link to="/">Home</Link>
@@ -14,7 +14,6 @@ const Navbar = () => {
       <img src="" alt="UserPhoto" />
       <nav className="flex space-x-4">
         <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
       </nav>
     </div>
   );
