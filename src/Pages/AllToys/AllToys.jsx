@@ -1,27 +1,43 @@
-    import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
-    const AllToys = () => {
-    const toys = useLoaderData();
+const AllToys = () => {
+  const toys = useLoaderData();
 
-        return (
+  return (
     <div className="min-h-screen bg-base-200 py-2 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-5xl text-center text- mb-8 ">All Toys {toys.length}</h1>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <h1 className="text-5xl text-center text- mb-8">All Toys {toys.length}</h1>
+        <table className="table flex w-full">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Seller Name</th>
+              <th>Sub Category</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {toys.map((toy) => {
+              const { name, sellerName, subCategory, price } = toy;
 
-        <div className="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img src="./logoo.png" className="[width:300px]" alt="Album"/></figure>
-            <div className="card-body">
-                <h2 className="card-title">New album is released!</h2>
-                <p>Click the button to View details on Spotiwhy app.</p>
-                <div className="card-actions justify-end">
-                <button className="btn btn-primary">View details</button>
-            </div>
-        </div>
-        </div>
-        
+              return (
+                <tr key={toy._id}>
+                  <td>{name}</td>
+                  <td>{sellerName}</td>
+                  <td>{subCategory}</td>
+                  <td>{price}</td>
+                  <td>
+                    <Link to="/" className="bg-indigo-200 px-2 py-1 rounded-md">
+                      View Details
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
     </div>
-    </div>
-        );
-    };
+  );
+};
 
 export default AllToys;
