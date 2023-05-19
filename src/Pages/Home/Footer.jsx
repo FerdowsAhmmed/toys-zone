@@ -26,6 +26,7 @@ const Footer = () => {
         <Link to="/">Terms of use</Link> 
         <Link to="/">Privacy policy</Link> 
       </div>
+      <p className='pt-10'>Copyright © 2023 - All right reserved</p>
     </footer>
     );
 };

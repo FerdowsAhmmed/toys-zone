@@ -120,9 +120,9 @@ const AddToy = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           >
             <option value="">Select Sub-category</option>
-            <option value="Math Toys">Math Toys</option>
-            <option value="Language Toys">Language Toys</option>
-            <option value="Science Toys">Science Toys</option>
+            <option value="Math Toys">Math-Toys</option>
+            <option value="Language Toys">Language-Toys</option>
+            <option value="Science Toys">Science-Toys</option>
           </select>
         </div>
 

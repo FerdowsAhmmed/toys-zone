@@ -15,6 +15,7 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import Blog from './Pages/Blog/Blog';
 import SingleToy from './Pages/SingleToy/SingleToy';
+import ToyCategories from './Pages/ToyCategories/ToyCategories';
 
 
 
@@ -33,8 +34,13 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:8801/toy"),
       },
       {
-        path: "/myToys/:email", // Update the path to include the email parameter
+        path: "/myToys/:email", 
         element: <MyToys></MyToys>,
+      },
+      {
+        path: "/toy/subcategory/:subCategory",
+        element: <ToyCategories></ToyCategories>,
+        loader: () => fetch("http://localhost:8801/toy"),
       },
       {
         path: "/addToy",
