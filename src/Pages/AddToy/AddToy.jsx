@@ -48,20 +48,6 @@ const AddToy = () => {
         console.error(error);
       });
   };
-  
-
-
-
-
-
-        // if(data.insertedId){
-      //   Swal.fire({
-      //     title: 'Success!',
-      //     text: 'Toy added successfully',
-      //     icon: 'success',
-      //     confirmButtonText: 'Ok'
-      //   })
-      // }
     return (
         <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8">
    <div className="w-1/2 mx-auto mt-8">
