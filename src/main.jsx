@@ -17,47 +17,47 @@ import Blog from './Pages/Blog/Blog';
 import SingleToy from './Pages/SingleToy/SingleToy';
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    children:[
+    children: [
       {
         path: "/",
-    element: <Home></Home>
+        element: <Home></Home>,
       },
       {
         path: "/allToys",
-    element: <AllToys></AllToys>,
-    loader: ()=> fetch('http://localhost:8001/toy')
+        element: <AllToys></AllToys>,
+        loader: () => fetch("http://localhost:8801/toy"),
       },
       {
-        path: "/myToys",
-    element: <MyToys></MyToys>
+        path: "/myToys/:email", // Update the path to include the email parameter
+        element: <MyToys></MyToys>,
       },
       {
         path: "/addToy",
-    element: <AddToy></AddToy>
+        element: <AddToy></AddToy>,
       },
       {
         path: "/toy/:id",
         element: <SingleToy></SingleToy>,
-        loader: ({ params }) => fetch(`http://localhost:8001/toy/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:8801/toy/${params.id}`),
       },
-      
       {
         path: "/myBlog",
-    element: <Blog></Blog>
+        element: <Blog></Blog>,
       },
       {
         path: "/login",
-    element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/register",
-    element: <Register></Register>
+        element: <Register></Register>,
       },
-    ]
+    ],
   },
 ]);
 

@@ -25,7 +25,7 @@ const AddToy = () => {
       description
     };
   
-    fetch('http://localhost:8001/toy', {
+    fetch('http://localhost:8801/toy', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -1,76 +1,69 @@
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 const MyToys = () => {
-    const toys = [
-        {
-          id: 1,
-          pictureUrl: 'https://example.com/toy1.jpg',
-          name: 'Toy 1',
-          sellerName: 'Seller A',
-          price: 19.99,
-          rating: 4.5,
-        },
-        {
-          id: 2,
-          pictureUrl: 'https://example.com/toy2.jpg',
-          name: 'Toy 2',
-          sellerName: 'Seller B',
-          price: 29.99,
-          rating: 4.2,
-        },
-      
-      ];
-      const handleUpdate = (toyId) => {
-       
-        console.log(`Updating toy with ID: ${toyId}`);
-      };
-    
-      const handleDelete = (toyId) => {
-      
-        console.log(`Deleting toy with ID: ${toyId}`);
-      };
-    return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200 py-2 px-4 sm:px-6 lg:px-8">
-            <div className="w-full max-w-3xl mx-auto">
-      <table className="min-w-full bg-white border border-gray-200">
-        <thead>
-          <tr>
-            <th className="px-6 py-3 border-b border-gray-200">Toy Image</th>
-            <th className="px-6 py-3 border-b border-gray-200">Seller Name</th>
-            <th className="px-6 py-3 border-b border-gray-200">Price</th>
-            <th className="px-6 py-3 border-b border-gray-200">Rating</th>
-            <th className="px-6 py-3 border-b border-gray-200">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+  const { email } = useParams();
+  const [toys, setToys] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchToys = async () => {
+      try {
+        const response = await fetch(`http://localhost:8801/toy/email/ferdows@gmail.com`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch toys");
+        }
+        const data = await response.json();
+        setToys(data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setIsLoading(false);
+      }
+    };
+
+    fetchToys();
+  }, [email]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div className="min-h-screen bg-base-200 py-2 px-4 sm:px-6 lg:px-8">
+      {toys.length === 0 ? (
+        <div>No toys found.</div>
+      ) : (
+        <div className="grid grid-cols-1 gap-6">
           {toys.map((toy) => (
-            <tr key={toy.id}>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <img src={toy.pictureUrl} alt={toy.name} className="h-16 w-16 rounded" />
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">{toy.sellerName}</td>
-              <td className="px-6 py-4 whitespace-nowrap">${toy.price}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{toy.rating}</td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <button
-                  className="text-blue-500 hover:text-blue-700 mr-2"
-                  onClick={() => handleUpdate(toy.id)}
-                >
-                  Update
-                </button>
-                <button
-                  className="text-red-500 hover:text-red-700"
-                  onClick={() => handleDelete(toy.id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <div className="card flex flex-row bg-base-100 shadow-lg" key={toy._id}>
+              <figure>
+                <img src={toy.pictureUrl} style={{ height: '150px', width: '150px' , padding:'20px'}} alt={toy.name} />
+              </figure>
+              <div className="card-body flex flex-row justify-between items-center">
+              <div>
+                <h2>{toy.name}</h2>
+                <p>Seller: {toy.sellerName}</p>
+                <p>Price: {toy.price}</p>
+                <p>Rating: {toy.rating}</p>
+                <p>Quantity: {toy.quantity}</p>
+              </div>
+              <div className="flex flex-col">
+                <Link className="bg-green-500 mb-2 px-4 rounded-md">Update</Link>
+                <Link className="bg-red-400 mb-2 px-4 rounded-md">Delete</Link>
+             </div>
+              </div>
+            </div>
           ))}
-        </tbody>
-      </table>
-    </div>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default MyToys;

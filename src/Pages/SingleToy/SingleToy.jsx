@@ -6,13 +6,13 @@ const SingleToy = () => {
   const [toyDetails, setToyDetails] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:8001/toy/${id}`)
+    fetch(`http://localhost:8801/toy/${id}`)
       .then((res) => res.json())
       .then((data) => setToyDetails(data));
-  }, []);
+  }, );
 
   return (
-      <section className="mb-96">
+      <section className="mb-30">
        <h1 className="text-center text-5xl mt-6">Toy Details</h1>
      <div className=" p-6  m-12 bg-white shadow-lg rounded-lg">
       <img className="w-96 mx-auto mb-4 rounded-xl" src={toyDetails?.pictureUrl} alt="" />
