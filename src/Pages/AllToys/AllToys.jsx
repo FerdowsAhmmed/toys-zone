@@ -1,9 +1,61 @@
 
 const AllToys = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8">
-            <h1>All toys are here</h1>
+<div className="min-h-screen bg-base-200 py-2 px-4 sm:px-6 lg:px-8">
+    <h1 className="text-5xl text-center text- mb-8 ">All Toys</h1>
+<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="card lg:card-side bg-base-100 shadow-xl">
+             <figure><img src="./logoo.png" className="w-100" alt="Album"/></figure>
+        <div className="card-body">
+            <h2 className="card-title">New album is released!</h2>
+            <p>Click the button to View details on Spotiwhy app.</p>
+            <div className="card-actions justify-end">
+            <button className="btn btn-primary">View details</button>
+            </div>
+       </div>
+    </div>
+    <div className="card lg:card-side bg-base-100 shadow-xl">
+             <figure><img src="./logoo.png" className="[width:300px]" alt="Album"/></figure>
+        <div className="card-body">
+            <h2 className="card-title">New album is released!</h2>
+            <p>Click the button to View details on Spotiwhy app.</p>
+            <div className="card-actions justify-end">
+            <button className="btn btn-primary">View details</button>
         </div>
+    </div>
+    </div>
+    <div className="card lg:card-side bg-base-100 shadow-xl">
+             <figure><img src="./logoo.png" className="[width:300px]" alt="Album"/></figure>
+        <div className="card-body">
+            <h2 className="card-title">New album is released!</h2>
+            <p>Click the button to listen on Spotiwhy app.</p>
+            <div className="card-actions justify-end">
+            <button className="btn btn-primary">View details</button>
+        </div>
+    </div>
+    </div>
+    <div className="card lg:card-side bg-base-100 shadow-xl">
+             <figure><img src="./logoo.png" className="[width:300px]" alt="Album"/></figure>
+        <div className="card-body">
+            <h2 className="card-title">New album is released!</h2>
+            <p>Click the button to View details on Spotiwhy app.</p>
+            <div className="card-actions justify-end">
+            <button className="btn btn-primary">View details</button>
+        </div>
+    </div>
+    </div>
+    <div className="card lg:card-side bg-base-100 shadow-xl">
+             <figure><img src="./logoo.png" className="[width:300px]" alt="Album"/></figure>
+        <div className="card-body">
+            <h2 className="card-title">New album is released!</h2>
+            <p>Click the button to View details on Spotiwhy app.</p>
+            <div className="card-actions justify-end">
+            <button className="btn btn-primary">View details</button>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
     );
 };
 

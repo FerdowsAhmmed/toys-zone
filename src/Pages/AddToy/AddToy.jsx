@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Swal from 'sweetalert2'
 const AddToy = () => {
   const [pictureUrl, setPictureUrl] = useState('');
   const [name, setName] = useState('');
@@ -9,11 +10,34 @@ const AddToy = () => {
   const [rating, setRating] = useState('');
   const [quantity, setQuantity] = useState('');
   const [description, setDescription] = useState('');
-  const toyDetails={pictureUrl,name,sellerName,sellerEmail,subCategory,price,rating,quantity,description};
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-   console.log(toyDetails,);
+    const toyDetails={pictureUrl,name,sellerName,sellerEmail,subCategory,price,rating,quantity,description};
+  //  console.log(toyDetails,);
+  fetch('http://localhost:3001/toy', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(toyDetails)
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(data.insertedId){
+        Swal.fire({
+          title: 'Success!',
+          text: 'Toy added successfully',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  
   };
     return (
         <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8">
