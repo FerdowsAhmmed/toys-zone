@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import app from '../../Firebase/firebaseConfig';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -18,6 +19,7 @@ const Login = () => {
         setError('');
         setSuccess('User logged in successfully');
         console.log(userCredential.user);
+        navigate('/');
         localStorage.setItem('user', JSON.stringify(userCredential.user));
       })
       .catch((error) => {
@@ -34,6 +36,7 @@ const Login = () => {
         setError('');
         setSuccess('User logged in successfully');
         console.log(result.user);
+        navigate('/');
         localStorage.setItem('user', JSON.stringify(result.user));
       })
       .catch((error) => {

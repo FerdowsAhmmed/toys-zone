@@ -1,11 +1,18 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const userData = JSON.parse(localStorage.getItem('user'));
+  const [userData, setUserData] = useState(() => JSON.parse(localStorage.getItem("user")));
+
+  useEffect(() => {
+    const updatedUserData = JSON.parse(localStorage.getItem("user"));
+    setUserData(updatedUserData);
+  }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
-    window.location.reload();
+    localStorage.removeItem("user");
+    setUserData(null);
+    window.location.href = "/login";
   };
 
   return (
@@ -21,7 +28,9 @@ const Navbar = () => {
         {userData && <Link to="/addToy">Add a Toy</Link>}
         <Link to="/myBlog">My Blog</Link>
       </nav>
-      {userData && <img src={userData.photo} alt="UserPhoto" />}
+      {userData && userData.photoURL && (
+        <img src={userData.photoURL} className="w-16 rounded-md" alt="UserPhoto" title={userData.displayName} />
+      )}
       <nav className="flex space-x-4">
         {userData ? (
           <button onClick={handleLogout}>Logout</button>
