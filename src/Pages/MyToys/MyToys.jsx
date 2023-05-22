@@ -10,7 +10,7 @@ const MyToys = () => {
   useEffect(() => {
     const fetchToys = async () => {
       try {
-        const response = await fetch(`http://localhost:8801/toy/email/ferdows962@gmail.com`);
+        const response = await fetch(`https://toys-zone-server.vercel.app/toy/email/ferdows962@gmail.com`);
         if (!response.ok) {
           throw new Error("Failed to fetch toys");
         }

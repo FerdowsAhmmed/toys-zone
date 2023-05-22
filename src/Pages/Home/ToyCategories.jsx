@@ -10,7 +10,7 @@ const ToyCategories = () => {
   useEffect(() => {
     const fetchToys = async () => {
       try {
-        let url = "http://localhost:8801/toy";
+        let url = "https://toys-zone-server.vercel.app/toy";
         if (subCategory) {
           url += `/subcategory/${subCategory}`;
         }
@@ -65,10 +65,14 @@ const ToyCategories = () => {
                 alt={category.name}
               />
               <h2>{category.name}</h2>
-              <p>Seller: {category.sellerName}</p>
               <p>Price: {category.price}</p>
               <p>Rating: {category.rating}</p>
               <p>Quantity: {category.quantity}</p>
+              <Link to={"/toy/" + category._id}>
+                  <button className="bg-green-900 text-slate-300 px-4 py-1 rounded-xl mt-10">
+                    View Details
+                  </button>
+                </Link>
             </div>
           ))
         )}

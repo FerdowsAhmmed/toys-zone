@@ -25,7 +25,7 @@ const AddToy = () => {
       description
     };
   
-    fetch('http://localhost:8801/toy', {
+    fetch('https://toys-zone-server.vercel.app/toy', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

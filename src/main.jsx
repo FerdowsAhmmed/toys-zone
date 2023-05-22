@@ -15,7 +15,7 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import Blog from './Pages/Blog/Blog';
 import SingleToy from './Pages/SingleToy/SingleToy';
-import ToyCategories from './Pages/ToyCategories/ToyCategories';
+import ToyCategories from './Pages/Home/ToyCategories';
 
 
 
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/allToys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:8801/toy"),
+        loader: () => fetch("https://toys-zone-server.vercel.app/toy"),
       },
       {
         path: "/myToys/:email", 
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: "/toy/subcategory/:subCategory",
         element: <ToyCategories></ToyCategories>,
-        loader: () => fetch("http://localhost:8801/toy"),
+        loader: () => fetch("https://toys-zone-server.vercel.app/toy"),
       },
       {
         path: "/addToy",
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       {
         path: "/toy/:id",
         element: <SingleToy></SingleToy>,
-        loader: ({ params }) => fetch(`http://localhost:8801/toy/${params.id}`),
+        loader: ({ params }) => fetch(`https://toys-zone-server.vercel.app/toy/${params.id}`),
       },
       {
         path: "/myBlog",

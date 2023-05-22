@@ -6,7 +6,7 @@ const SingleToy = () => {
   const [toyDetails, setToyDetails] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:8801/toy/${id}`)
+    fetch(`https://toys-zone-server.vercel.app/toy/${id}`)
       .then((res) => res.json())
       .then((data) => setToyDetails(data));
   }, );
