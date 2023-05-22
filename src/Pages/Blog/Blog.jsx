@@ -25,7 +25,7 @@ const Blog = () => {
   <li>The access token should be stored on the client-side in a secure manner, typically in memory or a session storage mechanism provided by the browser (e.g., <code>sessionStorage</code> or <code>localStorage</code>).</li>
   <li>Storing the access token in memory (<code>useState</code> or a global variable) ensures that it is cleared when the page is refreshed or closed.</li>
   <li>Alternatively, storing the access token in <code>sessionStorage</code> or <code>localStorage</code> allows it to persist even after the page is refreshed or closed, enabling the user to stay logged in across sessions.</li>
-  <li>However, storing the access token in <code>localStorage</code> is not recommended if it contains sensitive information, as it can be accessed by JavaScript code running on the same domain.</li>
+  <li>However, storing the access token in <code> localStorage</code> is not recommended if it contains sensitive information, as it can be accessed by JavaScript code running on the same domain.</li>
 </ul>
 <h2><strong>Refresh Token</strong></h2>
 <ul>
