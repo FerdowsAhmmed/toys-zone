@@ -40,7 +40,7 @@ const ToyCategories = () => {
 
   return (
     <main>
-      <div>
+      <div data-aos="fade-up" data-aos-duration="1000">
         <h1 className="text-center text-2xl mt-10">Shop by Category</h1>
         <div className="btn-group grid grid-cols-3 w-1/2 mx-auto my-4">
           <Link to="/toy/subcategory/Math-Toys" className="btn btn-primary">

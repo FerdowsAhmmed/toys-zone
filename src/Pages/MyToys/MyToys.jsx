@@ -8,6 +8,20 @@ const MyToys = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const handleRouteChange = () => {
+      document.title = `Toys Zone | My Toys`;
+    };
+
+    handleRouteChange(); 
+
+    window.addEventListener('popstate', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, []);
+
+  useEffect(() => {
     const fetchToys = async () => {
       try {
         const response = await fetch(`https://toys-zone-server.vercel.app/toy/email/ferdows962@gmail.com`);

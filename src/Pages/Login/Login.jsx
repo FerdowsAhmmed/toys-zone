@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import app from '../../Firebase/firebaseConfig';
@@ -7,6 +7,21 @@ const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      document.title = `Toys Zone | Login`;
+    };
+
+    handleRouteChange(); 
+
+    window.addEventListener('popstate', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, []);
+
 
   const handleEmailPasswordLogin = (event) => {
     event.preventDefault();

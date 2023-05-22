@@ -4,7 +4,10 @@ const Gallery = () => {
   return (
     <div className="container mx-auto py-8  md:px-10">
       <h2 className="md:text-5xl font-bold mb-4 text-center py-24">Image Gallery</h2>
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-5 gap-4" data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0">
         <div className="relative">
           <img
             src="https://i.ibb.co/ydDdySq/banner-image.jpg"

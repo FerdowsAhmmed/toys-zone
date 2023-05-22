@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState ,useEffect } from 'react';
 import Swal from 'sweetalert2'
 const AddToy = () => {
   const [pictureUrl, setPictureUrl] = useState('');
@@ -11,6 +11,20 @@ const AddToy = () => {
   const [quantity, setQuantity] = useState('');
   const [description, setDescription] = useState('');
   
+  useEffect(() => {
+    const handleRouteChange = () => {
+      document.title = `Toys Zone | Add a toy`;
+    };
+
+    handleRouteChange(); 
+
+    window.addEventListener('popstate', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const toyDetails = {
@@ -49,7 +63,7 @@ const AddToy = () => {
       });
   };
     return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-duration="1000">
    <div className="w-1/2 mx-auto mt-8">
     <h1 className='text-3xl text-center py-5 bg-orange-900 text-white mb-4'>Add a toy Form</h1>
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">

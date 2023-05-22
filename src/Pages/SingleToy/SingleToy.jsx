@@ -12,7 +12,7 @@ const SingleToy = () => {
   }, );
 
   return (
-      <section className="mb-30">
+      <section className="mb-30" data-aos="zoom-out-left">
        <h1 className="text-center text-5xl mt-6">Toy Details</h1>
      <div className=" p-6  m-12 bg-white shadow-lg rounded-lg">
       <img className="w-96 mx-auto mb-4 rounded-xl" src={toyDetails?.pictureUrl} alt="" />

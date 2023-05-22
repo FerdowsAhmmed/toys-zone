@@ -1,9 +1,22 @@
-
+import { useEffect } from 'react';
 
 const Blog = () => {
+  useEffect(() => {
+    const handleRouteChange = () => {
+      document.title = `Toys Zone | My Blog`;
+    };
+
+    handleRouteChange(); 
+
+    window.addEventListener('popstate', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, []);
     return (
         <div className="min-h-screen items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8">
-            <div>
+            <div data-aos="fade-up" data-aos-duration="1000">
             <h2 className="text-3xl">1.  What is an access token and refresh token? How do they work and where should we store them on the client-side?</h2>
             <h2><strong>Access Token</strong></h2>
 <p>An access token is a short-lived token that is issued by an authentication server after a successful authentication.</p>
@@ -33,13 +46,13 @@ const Blog = () => {
   <li>Storing the refresh token in an HTTP-only cookie prevents it from being accessed by JavaScript code, providing an extra layer of security against cross-site scripting (XSS) attacks.</li>
   <li>The HTTP-only cookie is automatically sent by the browser with each API request, allowing the server to validate the refresh token and issue a new access token when necessary.</li>
 </ul>
-<p>It's important to follow secure practices when handling access tokens and refresh tokens, such as using secure HTTPS connections, validating tokens on the server-side, and implementing token expiration and revocation mechanisms.</p>
+<p>It is important to follow secure practices when handling access tokens and refresh tokens, such as using secure HTTPS connections, validating tokens on the server-side, and implementing token expiration and revocation mechanisms.</p>
 
 
 
 
             </div>
-            <div className="py-10">
+            <div className="py-10" data-aos="fade-up" data-aos-duration="1000">
             <h2 className="text-3xl mb-6">2. Compare SQL and NoSQL databases.</h2>
             <h2 className="text-2xl text-center mb-4">Comparison of SQL and NoSQL Databases</h2>
 <table>
@@ -61,7 +74,7 @@ const Blog = () => {
   <tr>
     <td>Query Language</td>
     <td>Structured Query Language (SQL) is used to perform queries for data retrieval and manipulation.</td>
-    <td>Each NoSQL database has its own query language or API. Examples include MongoDB's query language, Cassandra Query Language (CQL), etc.</td>
+    <td>Each NoSQL database has its own query language or API. Examples include query of MongoDB language, Cassandra Query Language (CQL), etc.</td>
   </tr>
   <tr>
     <td>Schema</td>
@@ -87,7 +100,7 @@ const Blog = () => {
 Please note that this is a general comparison, and specific databases within the SQL and NoSQL categories may have additional features or characteristics.
 
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-duration="1000">
             <h2 className="text-3xl mb-6">4. What is express js? What is Nest JS?</h2>    
 <p><strong>What is Express.js?</strong> </p>
 <p>Express.js is a minimal and flexible web application framework for Node.js. It provides a set of features and utilities to build web applications and APIs quickly and efficiently. Express.js simplifies the process of handling HTTP requests, routing, middleware integration, and more. It follows a middleware-based architecture, allowing developers to create modular and scalable applications. With a rich ecosystem of plugins and extensions, Express.js is widely used for building server-side applications in Node.js.</p>
@@ -96,7 +109,7 @@ Please note that this is a general comparison, and specific databases within the
 <p>Nest.js follows the architectural style of modules and decorators, promoting modularity and reusability of code. It offers features like dependency injection, middleware support, built-in validation, and comprehensive tooling for building enterprise-grade applications. Nest.js is particularly well-suited for creating scalable and maintainable server-side applications, APIs, microservices, and real-time applications.</p>
 <p>Both Express.js and Nest.js are popular choices for building web applications and APIs in Node.js, with Express.js being more lightweight and minimalist, while Nest.js provides a structured and opinionated approach to application development. The choice between the two depends on the specific requirements, complexity, and preferences of the project.</p>
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-duration="2000">
             <p className="text-3xl ">5. What is MongoDB Aggregate?</p>
 <p>Aggregation of MongoDB Framework is a powerful feature that allows you to perform advanced data analysis and transformation operations on your data stored in MongoDB. It provides a set of operators and stages that enable you to process, group, filter, and perform computations on your data.</p>
 <p><b>How does MongoDB Aggregate work?</b></p>

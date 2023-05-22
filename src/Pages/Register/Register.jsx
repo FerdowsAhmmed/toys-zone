@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import app from '../../Firebase/firebaseConfig';
@@ -6,6 +6,20 @@ import app from '../../Firebase/firebaseConfig';
 const Register = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      document.title = `Toys Zone | Register`;
+    };
+
+    handleRouteChange(); 
+
+    window.addEventListener('popstate', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, []);
 
   const handleRegister = (event) => {
     event.preventDefault();

@@ -2,7 +2,8 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
-      <footer className="footer p-10 bg-slate-900 text-white">
+      <footer className="footer p-10 bg-slate-900 text-white" data-aos="fade-up"
+      data-aos-anchor-placement="bottom-bottom">
       <div>
        <img src={'https://i.ibb.co/Kr8GDGy/logoo.png'} alt="Logo" className='w-3/12'/>
         <p>Toys Zone<br/>Providing reliable toys since 2022</p>
