@@ -2,8 +2,8 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
-      <footer className="footer p-10 bg-slate-900 text-white" data-aos="fade-up"
-      data-aos-anchor-placement="bottom-bottom">
+    <div className=' bg-slate-900 text-white'>
+        <footer className="footer p-10">
       <div>
        <img src={'https://i.ibb.co/Kr8GDGy/logoo.png'} alt="Logo" className='w-3/12'/>
         <p>Toys Zone<br/>Providing reliable toys since 2022</p>
@@ -27,8 +27,14 @@ const Footer = () => {
         <Link to="/">Terms of use</Link> 
         <Link to="/">Privacy policy</Link> 
       </div>
-      <p className='pt-10'>Copyright © 2023 - All right reserved</p>
+      <div>
+        <span className="footer-title">Address</span> 
+        <Link to="/">Kaligat Road</Link> 
+        <Link to="/">Sreemangal,Moulvibaza</Link> 
+      </div> 
     </footer>
+    <p className='text-center pb-10'>Copyright © 2023 - All right reserved</p>
+    </div>
     );
 };
 

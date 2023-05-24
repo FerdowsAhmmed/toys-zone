@@ -23,7 +23,7 @@ const Blog = () => {
 <ul>
   <li>It contains information about the identity of user and permissions.</li>
   <li>The access token is usually included in the authorization header of API requests to access protected resources.</li>
-  <li>It has a relatively short expiration time (e.g., minutes or hours) to enhance security.</li>
+  <li>It has a relative gallery-imagely short expiration time (e.g., minutes or hours) to enhance security.</li>
 </ul>
 <h2><strong>Refresh Token</strong></h2>
 <p>A refresh token is a long-lived token that is also issued by the authentication server during authentication.</p>

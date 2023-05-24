@@ -1,0 +1,8 @@
+@media only screen and (max-width: 600px) {
+    .gallery-image img{
+        height: 100px;
+    }
+    .container{
+        padding: 10px;
+    }
+}

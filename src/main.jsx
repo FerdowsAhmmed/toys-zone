@@ -16,6 +16,8 @@ import Register from './Pages/Register/Register';
 import Blog from './Pages/Blog/Blog';
 import SingleToy from './Pages/SingleToy/SingleToy';
 import ToyCategories from './Pages/Home/ToyCategories';
+import PrivateRoute from './Routers/PrivateRouters/PrivateRouter';
+import UpdateToy from './Pages/AddToy/UpdateToy';
 
 
 
@@ -35,8 +37,14 @@ const router = createBrowserRouter([
         loader: () => fetch("https://toys-zone-server.vercel.app/toy"),
       },
       {
+        path: "/details/:id",
+        element: <AllToys></AllToys>,
+        loader: () => fetch("https://toys-zone-server.vercel.app/toy"),
+      },
+
+      {
         path: "/myToys/:email", 
-        element: <MyToys></MyToys>,
+        element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
       },
       {
         path: "/toy/subcategory/:subCategory",
@@ -45,11 +53,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/addToy",
-        element: <AddToy></AddToy>,
+        element: <PrivateRoute><AddToy></AddToy></PrivateRoute>,
+      },
+      {
+        path: "/updateToy/:id",
+        element: <PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>,
+        loader: () => fetch("https://toys-zone-server.vercel.app/toy"),
       },
       {
         path: "/toy/:id",
-        element: <SingleToy></SingleToy>,
+        element: <PrivateRoute><SingleToy></SingleToy></PrivateRoute>,
         loader: ({ params }) => fetch(`https://toys-zone-server.vercel.app/toy/${params.id}`),
       },
       {
@@ -71,6 +84,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router}>
+    </RouterProvider>
+  </React.StrictMode>
+);
+
