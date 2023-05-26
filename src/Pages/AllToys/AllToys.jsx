@@ -6,17 +6,13 @@ const AllToys = () => {
     const handleRouteChange = () => {
       document.title = `Toys Zone | All Toys`;
     };
-
     handleRouteChange(); 
-
     window.addEventListener('popstate', handleRouteChange);
-
     return () => {
       window.removeEventListener('popstate', handleRouteChange);
     };
   }, []);
   const toys = useLoaderData();
-
   return (
     <div className="min-h-screen bg-base-200 py-2 px-4 sm:px-6 lg:px-8" data-aos="fade-right"
     data-aos-offset="100"

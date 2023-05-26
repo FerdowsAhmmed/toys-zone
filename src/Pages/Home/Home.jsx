@@ -18,7 +18,7 @@ const Home = () => {
     };
   }, []);
     return (
-    <div className="min-h-screen bg-base-200">
+    <div className="min-h-screen">
       <Banner></Banner>
       <Gallery></Gallery>
       <ToyCategories></ToyCategories>

@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 const ToyCategories = () => {
   const { subCategory } = useParams();
   const [categories, setCategories] = useState([]);
-  console.log(categories);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
