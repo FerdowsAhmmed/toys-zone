@@ -2,6 +2,9 @@ import  { useEffect } from 'react';
 import Banner from "../Banner/Banner";
 import Gallery from "./Gallery";
 import ToyCategories from "./ToyCategories";
+import Contact from './Contact';
+import AboutOurService from './AboutOurService';
+
 
 const Home = () => {
   useEffect(() => {
@@ -22,6 +25,8 @@ const Home = () => {
       <Banner></Banner>
       <Gallery></Gallery>
       <ToyCategories></ToyCategories>
+      <Contact></Contact>
+      <AboutOurService></AboutOurService>
     </div>
     );
 };

@@ -5,9 +5,9 @@ import toast from 'react-hot-toast';
 const MyToys = () => {
   const { email } = useParams();
   const [toys, setToys] = useState([]);
-  console.log(toys);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc"); 
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -30,7 +30,6 @@ const MyToys = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-     
         if (data.deletedCount > 0) {
           toast.success('Successfully deleted!');
         }
@@ -48,6 +47,14 @@ const MyToys = () => {
           throw new Error("Failed to fetch toys");
         }
         const data = await response.json();
+
+        // Sort the toys based on price
+        if (sortOrder === "asc") {
+          data.sort((a, b) => a.price - b.price); 
+        } else if (sortOrder === "desc") {
+          data.sort((a, b) => b.price - a.price); 
+        }
+
         setToys(data);
         setIsLoading(false);
       } catch (error) {
@@ -55,10 +62,13 @@ const MyToys = () => {
         setIsLoading(false);
       }
     };
-  
+
     fetchToys();
-  }, [email]);
-  
+  }, [email, sortOrder]);
+
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -70,6 +80,14 @@ const MyToys = () => {
 
   return (
     <div className="min-h-screen bg-base-200 py-2 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-end mb-4">
+        <label htmlFor="sortOrder" className="mr-2">Sort Order:</label>
+        <select id="sortOrder" value={sortOrder} onChange={handleSortChange}>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+
       {toys.length === 0 ? (
         <div>No toys found.</div>
       ) : (
@@ -90,7 +108,7 @@ const MyToys = () => {
                   <p>Price: {toy.price}</p>
                   <p>Rating: {toy.rating}</p>
                   <p>Quantity: {toy.quantity}</p>
-                  <p>Id:{toy._id}</p>
+                  {/* <p>Id: {toy._id}</p> */}
                 </div>
                 <div className="flex flex-col">
                   <Link
