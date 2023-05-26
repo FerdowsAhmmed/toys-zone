@@ -3,7 +3,7 @@ import  './Gallery.css'
 const Gallery = () => {
   return (
     <div className="container mx-auto py-8 mt-4 md:px-10 bg-amber-700">
-      <h2 className="md:text-2xl font-bold mb-4 text-center bg-amber-800 rounded-xl  md:py-4">Image Gallery</h2>
+      <h2 className="md:text-2xl font-bold mb-4 text-center bg-amber-700 text-white md:py-4 underline underline-offset-8">Image Gallery</h2>
       <div className=" grid grid-cols-3 md:grid-cols-5 gap-2 " data-aos="fade-zoom-in"
      data-aos-easing="ease-in-back"
      data-aos-delay="300"

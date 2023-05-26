@@ -2,11 +2,11 @@
 
 const Contact = () => {
     return (
-    <section className="w-9/12 mx-auto my-32" data-aos="zoom-in">
-      <h1 className="text-center text-4xl">Feel free to contact with us</h1>
-           <div className=" mx-auto  px-10"   >
+    <section className="w-9/12 mx-auto md:my-32" data-aos="zoom-in">
+      <h1 className="text-center text-3xl w-full underline underline-offset-8">Contact Us</h1>
+           <div className=" mx-auto  md:px-10"   >
       <form className="bg-amber-600 p-10 mt-4">
-        <div className="fle">
+        <div className="w-full">
           <label className="label">
             <span className="label-text">Name</span>
           </label>

@@ -20,10 +20,6 @@ import PrivateRoute from './Routers/PrivateRouters/PrivateRouter';
 import UpdateToy from './Pages/AddToy/UpdateToy';
 import Page404 from './Page404/Page404';
 
-
-
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,7 +39,6 @@ const router = createBrowserRouter([
         element: <AllToys></AllToys>,
         loader: () => fetch("https://toys-zone-server.vercel.app/toy"),
       },
-
       {
         path: "/myToys/:email", 
         element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,

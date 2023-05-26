@@ -66,9 +66,8 @@ const UpdateToy = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount) {
-            toast.success('Toy details successfully updated!');
+            toast.error('Toy details successfully updated!');
         }
       })
       .catch((error) => {

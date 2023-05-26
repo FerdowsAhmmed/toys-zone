@@ -17,7 +17,7 @@ const AllToys = () => {
     <div className="min-h-screen bg-base-200 py-2 px-4 sm:px-6 lg:px-8" data-aos="fade-right"
     data-aos-offset="100"
     data-aos-easing="ease-in-sine">
-      <h1 className="text-5xl text-center text- mb-8">All Toys {toys.length}</h1>
+      <h1 className="text-5xl text-center text- mb-8">All Toys</h1>
       <table className="table table-zebra w-full">
         <thead>
           <tr>

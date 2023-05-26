@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const SingleToy = () => {
   const { id } = useParams();
@@ -9,24 +9,41 @@ const SingleToy = () => {
     fetch(`https://toys-zone-server.vercel.app/toy/${id}`)
       .then((res) => res.json())
       .then((data) => setToyDetails(data));
-  }, );
+  }, [id]);
+
+  useEffect(() => {
+    const modalCheckbox = document.getElementById("my-modal-5");
+    if (modalCheckbox) {
+      modalCheckbox.checked = true;
+    }
+  }, []);
 
   return (
-      <section className="mb-30" data-aos="zoom-out-left">
-       <h1 className="text-center text-5xl mt-6">Toy Details</h1>
-     <div className=" p-6  m-12 bg-white shadow-lg rounded-lg">
-      <img className="w-96 mx-auto mb-4 rounded-xl" src={toyDetails?.pictureUrl} alt="" />
-     <div className="px-20 bg-white py-4">
-     <h2 className="text-2xl font-bold mb-2">{toyDetails?.name}</h2>
-      <p className="text-gray-600 mb-1">Seller Name: {toyDetails?.sellerName}</p>
-      <p className="text-gray-600 mb-1">Seller Email: {toyDetails?.sellerEmail}</p>
-      <p className="text-gray-600">Description: {toyDetails?.description}</p>
-      <p className="text-gray-600 mb-1">Available Quantity: {toyDetails?.quantity}</p>
-      <p className="text-green-600 mb-1">Price: {toyDetails?.price}</p>
-      <p className="text-yellow-500 mb-1">Rating: {toyDetails?.rating}</p>
-     </div>
-    </div>
-   </section>
+    <section
+      className="min-h-screen bg-base-200 py-2 px-4 sm:px-6 lg:px-8"
+      data-aos="zoom-out-left"
+    >
+      <input type="checkbox" id="my-modal-5" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box w-1/2 max-w-5xl">
+          <img
+            className="w-80 mx-auto mb-4 rounded-xl"
+            src={toyDetails?.pictureUrl}
+            alt=""
+          />
+          <h3 className="font-bold text-lg">{toyDetails?.name}</h3>
+          <p className="text-gray-600 mb-1">Seller Name: {toyDetails?.sellerName}</p>
+          <p className="text-gray-600 mb-1">Seller Email: {toyDetails?.sellerEmail}</p>
+          <p className="text-gray-600">Description: {toyDetails?.description}</p>
+          <p className="text-gray-600 mb-1">Available Quantity: {toyDetails?.quantity}</p>
+          <p className="text-green-600 mb-1">Price: {toyDetails?.price}</p>
+          <p className="text-yellow-500 mb-1">Rating: {toyDetails?.rating}</p>
+          <div className="modal-action">
+            <Link to="/allToys"><label htmlFor="my-modal-5" className="btn">Close!</label></Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

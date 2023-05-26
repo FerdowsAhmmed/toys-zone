@@ -1,17 +1,21 @@
+import { Link } from "react-router-dom";
+
 const Banner = () => {
     return (
-      <div className="hero h-[500px]" style={{ backgroundImage: `url("https://i.ibb.co/ydDdySq/banner-image.jpg")` }}>
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button className="btn btn-primary">Get Started</button>
-          </div>
+      <div className="bg-gradient-to-r py-28 from-blue-400 to-purple-700">
+      <div className="container mx-auto py-28 px-4">
+        <div className="text-white text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Toys Zone</h1>
+          <p className="text-xl md:text-3xl mb-8">Explore Science, Language, and Math Toys</p>
+          <Link to="/allToys" className="bg-white text-purple-500 font-bold rounded-full py-3 px-8 hover:bg-purple-500 hover:text-white transition duration-300">Shop Now</Link>
         </div>
       </div>
+    </div>
+    
     );
   };
   
   export default Banner;
+
+  
   
