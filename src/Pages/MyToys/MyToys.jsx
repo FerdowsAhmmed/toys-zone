@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import toast from 'react-hot-toast';
 
 const MyToys = () => {
-  const { email } = useParams();
+  const [userData, setUserData] = useState(() => JSON.parse(localStorage.getItem("user")));
+  console.log(userData.email);
+
+  useEffect(() => {
+    const updatedUserData = JSON.parse(localStorage.getItem("user"));
+    setUserData(updatedUserData);
+  }, []);
+  
   const [toys, setToys] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -42,13 +49,13 @@ const MyToys = () => {
   useEffect(() => {
     const fetchToys = async () => {
       try {
-        const response = await fetch(`https://toys-zone-server.vercel.app/toy/email/ferdows962@gmail.com`);
+        const response = await fetch(`https://toys-zone-server.vercel.app/toy/email/${userData.email}`);
         if (!response.ok) {
           throw new Error("Failed to fetch toys");
         }
         const data = await response.json();
 
-        // Sort the toys based on price
+      
         if (sortOrder === "asc") {
           data.sort((a, b) => a.price - b.price); 
         } else if (sortOrder === "desc") {
@@ -64,7 +71,7 @@ const MyToys = () => {
     };
 
     fetchToys();
-  }, [email, sortOrder]);
+  }, [userData.email, sortOrder]);
 
   const handleSortChange = (e) => {
     setSortOrder(e.target.value);
