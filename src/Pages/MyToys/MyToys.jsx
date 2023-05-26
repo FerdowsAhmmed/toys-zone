@@ -108,7 +108,6 @@ const MyToys = () => {
                   <p>Price: {toy.price}</p>
                   <p>Rating: {toy.rating}</p>
                   <p>Quantity: {toy.quantity}</p>
-                  {/* <p>Id: {toy._id}</p> */}
                 </div>
                 <div className="flex flex-col">
                   <Link
