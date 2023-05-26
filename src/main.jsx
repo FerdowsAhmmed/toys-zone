@@ -18,6 +18,7 @@ import SingleToy from './Pages/SingleToy/SingleToy';
 import ToyCategories from './Pages/Home/ToyCategories';
 import PrivateRoute from './Routers/PrivateRouters/PrivateRouter';
 import UpdateToy from './Pages/AddToy/UpdateToy';
+import Page404 from './Page404/Page404';
 
 
 
@@ -79,7 +80,12 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
+    
   },
+  {
+    path: "/*",
+    element: <Page404></Page404>,
+  }
 ]);
 
 
