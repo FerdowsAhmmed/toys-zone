@@ -9,13 +9,11 @@ const AllToys = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Fetch toys by toy name
     fetch(
       `https://toys-zone-server.vercel.app/toy?name=${searchQuery}&limit=${itemsPerPage}`
     )
       .then((response) => response.json())
       .then((data) => {
-        // Update toys state with search results
         setToys(data);
       })
       .catch((error) => {
@@ -37,13 +35,11 @@ const AllToys = () => {
   const handleItemsPerPageChange = (e) => {
     const selectedItemsPerPage = Number(e.target.value);
     setItemsPerPage(selectedItemsPerPage);
-    // Fetch toys with updated limit
     fetch(
       `https://toys-zone-server.vercel.app/toy?name=${searchQuery}&limit=${selectedItemsPerPage}`
     )
       .then((response) => response.json())
       .then((data) => {
-        // Update toys state with new limit
         setToys(data);
       })
       .catch((error) => {

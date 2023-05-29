@@ -20,7 +20,6 @@ const PrivateRouter = ({ children }) => {
   }, []);
 
   if (isLoading) {
-    // Still loading, show a loading indicator or skeleton screen
     return <div>Loading...</div>;
   }
 

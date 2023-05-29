@@ -45,7 +45,7 @@ const UpdateToy = () => {
 
   const handleToyUpdate = (event) => {
     event.preventDefault();
-    const Toy = {
+    const updatedToy = {
       pictureUrl,
       name,
       sellerName,
@@ -56,24 +56,27 @@ const UpdateToy = () => {
       quantity,
       description
     };
-
+  
     fetch(`https://toys-zone-server.vercel.app/toy/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(Toy)
+      body: JSON.stringify(updatedToy)
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount) {
-            toast.error('Toy details successfully updated!');
+        if (data.modifiedCount === 1) {
+          toast.success('Toy details successfully updated!');
+        } else {
+          toast.error('Failed to update toy details');
         }
       })
       .catch((error) => {
         console.error(error);
       });
   };
+  
 
   if (!toy) {
     return <div>Loading...</div>;
